@@ -1,0 +1,1 @@
+# Custom cashing for the last.fm & Spotify APIs
