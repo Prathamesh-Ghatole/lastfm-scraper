@@ -2,46 +2,106 @@
 
 import json
 
-# Setting up the config for usage.
-def authenticate():
+# Use functions given below to generate or load Config.json
+def initialize():
     try:
-        with open('config.json', 'r') as f:
-            config = json.load(f)
-        user_agent = config['user_agent']
-        key1 = config['key1']
-        key2 = config['key2']
-        key3 = config['key3']
-        username = config['username']
-        print("Config Loaded Successfully.")
-        key_list = [key1, key2, key3]
-        
+        #load config.json if it exists
+        cfg_object = loadConfig()
     except:
-        print('config.json wasn\'t found.\nCreating new config file. Please enter your credentials.')
-        user_agent = input('Enter User Agent: ')
-        username = input('Enter your username: ')
-        key1 = input('Enter Secret Key: ')
-        key2 = input('Enter Secret Key 2:\nLeave blank if you don\'t have mirror keys. ')
-        if key2 == '':
-            key2 = key1
-        key3 = input('Enter Secret Key 3:\nLeave blank if you don\'t have mirror keys. ')
-        if key3 == '':
-            key3 = key1
-        
-    #     with open('config.json.sample','r') as f:
-    #         config = json.load(f)
-        config = {'user_agent':None,'key1':None, 'key2':None, 'key3':None, 'username':None}
-        config['user_agent'] = user_agent
-        config['key1'] = key1
-        config['key2'] = key2
-        config['key3'] = key3
-        config['username'] = username
-        
-        with open('config.json','w+') as f:
-            json.dump(config, f)
-        
-        key_list = [key1, key2, key3]
+        #start config.json initialization if file doesnt exist.
+        cfg_object = authGenInteractive()
 
-        print()
-        print("Your configuration has been saved to config.json!")
-        
-    # Fetches variables: user_agent, username, key1, key2, key3, key_list
+    return cfg_object
+
+# Non-interactive function to Generate config.json
+def authGen(username,useragent,keylist):
+    
+    #Initialize config dict
+    config = {}
+    
+    #Set values for config
+    config['useragent'] = useragent
+    config['username'] = username
+    config['keylist'] = keylist
+
+    # for i in range(len(keylist)):
+    #     dict_key = "key{}".format(i+1)
+    #     config[dict_key] = keylist[i]
+
+    with open('config.json','w+') as f:
+        json.dump(config, f)
+
+    return config
+
+# Interactive function to Generate config.json
+def authGenInteractive():
+    print('Config not found.\nCreating new config file. Please enter your credentials.')
+    
+    #initializing var
+    user_agent = input('Enter User Agent: ')
+    user_name = input('Enter your username: ')
+    keyls = []
+
+    # Fetch n
+    notNum = True
+    while (notNum==True):
+        n = (input("Enter Number of Keys: "))
+        try:
+            n = int(n)
+        except:
+            pass
+        if type(n)==int:
+            notNum = False
+            n = int(n)
+
+    # Fetch n keys
+    for i in range(n):
+        new_key = input("Enter Key {} (leave blank if unavailable): ".format(i+1))
+        keyls.append(new_key)
+    
+    # Remove Redundant keys
+    for i in range(len(keyls)):
+        k = keyls[i]
+        if k == '':
+            keyls.pop(i)
+
+    config = authGen(username=user_name, useragent=user_agent, keylist=keyls)
+    print("Your configuration has been saved to config.json!\n")
+    config = loadConfig()
+
+
+    return config
+
+#return an auth object
+def loadConfig():
+
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+    
+    #New class Conf that takes in newly loaded config
+    class ConfigClass:
+        useragent = ''
+        username = ''
+        keylist = []
+        num = 0
+
+        def __init__(self, cfg):
+            self.useragent = cfg['useragent']
+            self.username = cfg['username']
+            self.keylist = cfg['keylist']
+            self.num = -1
+
+        def getKey(self):
+            # Return keys one by one from the key list
+            
+            length = len(self.keylist)
+            
+            if self.num==length-1:
+                self.num = -1
+
+            self.num += 1
+
+            return self.keylist[self.num]
+
+    print("Config Loaded Successfully.")
+    return ConfigClass(config)
