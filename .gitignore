@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 config.json
 env
 __pycache__
 config_copy.json
-=======
 ./lastfm-env
->>>>>>> master
