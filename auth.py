@@ -28,7 +28,7 @@ def authGen(username,useragent,keylist):
     #     dict_key = "key{}".format(i+1)
     #     config[dict_key] = keylist[i]
 
-    with open('config.json','w+') as f:
+    with open('configurations/config.json','w+') as f:
         json.dump(config, f)
 
     return config
@@ -75,7 +75,7 @@ def authGenInteractive():
 #return an auth object
 def loadConfig():
 
-    with open('config.json', 'r') as f:
+    with open('configurations/config.json', 'r') as f:
         config = json.load(f)
     
     #New class Conf that takes in newly loaded config
