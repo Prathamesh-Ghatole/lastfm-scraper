@@ -3,3 +3,4 @@ __pycache__
 webserver/__pycache__
 ./lastfm-env
 configurations/
+config.json
