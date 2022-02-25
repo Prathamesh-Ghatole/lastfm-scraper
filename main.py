@@ -1,3 +1,1 @@
-import test_lastfm
-
-test_lastfm.test()
+#empty for now
