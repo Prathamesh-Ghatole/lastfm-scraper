@@ -2,7 +2,7 @@ import requests
 import json
 import requests_cache as rcache
 
-def init():
+def initCache():
     rcache.install_cache(cache_name = 'request-cache/lastfm', backend='sqlite', expire_after = 180)
     global session
     session = rcache.CachedSession()
