@@ -11,7 +11,7 @@ lastfm.initCache()
 
 response = lastfm.getReq(key=config.getKey(), useragent=config.useragent, user=config.username, method='artist.getInfo', load={'artist':'Hardwell'})
 
-print(response.json().keys())
+
 print(response.json()['artist'])
 
 # print(lastfm.session)

@@ -1,7 +1,7 @@
 # Python env files
 env
 __pycache__
-webserver/__pycache__
+webserver/__pycache__/
 ./lastfm-env
 config.json
 
