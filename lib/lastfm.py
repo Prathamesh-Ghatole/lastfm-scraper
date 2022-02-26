@@ -21,10 +21,11 @@ def getReq(user, key, useragent, page=1, load = {}, method = 'user.getRecentTrac
     'format': 'json',
     'page': page
     }
+    for k, v in load.items():
+        payload[k] = v
+    print(payload)
 
-    # payload = payload.update(load)
-    # print(payload)
-    
     api_reply = requests.get('https://ws.audioscrobbler.com/2.0/', headers=headers, params=payload)
     
+
     return api_reply
