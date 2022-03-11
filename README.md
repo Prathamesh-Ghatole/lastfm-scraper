@@ -7,6 +7,7 @@ A simple platform to scrape last.fm scrobbles.
 
 ## Feature Set:
 - Scrape all streaming history from last.fm
-- Metadata Enhancement
+- Metadata Enhancement (Extended Artist Info, Genre Tags, etc.)
+- Chart and Visualization Generation with Plotly
 - Playlist Generator
 - Visualization using plotly
