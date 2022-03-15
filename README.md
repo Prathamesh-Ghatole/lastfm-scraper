@@ -4,12 +4,12 @@
 A simple platform to scrape & Analyze last.fm scrobbles.
 
 ## Done:
-- Added authentication features 🔐
-- Added Module for last.fm requests 🔍
+- 🔐 Added authentication features
+- 🔍 Added Module for last.fm requests
 
 ## Feature Set:
-- Scrape all streaming history from last.fm 📥
-- Metadata Enhancement (Extended Artist Info, Genre Tags, etc.) 📜
-- Chart and Visualization Generation with Plotly 📊
-- Playlist Generator 🎶
-- Interesting Progress bars 👀
+- 📥 Scrape all streaming history from last.fm
+- 📜 Metadata Enhancement (Extended Artist Info, Genre Tags, etc.)
+- 📊 Chart and Visualization Generation with Plotly
+- 🎶 Playlist Generator
+- 👀 Interesting Progress bars
