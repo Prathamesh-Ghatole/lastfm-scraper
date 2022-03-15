@@ -13,3 +13,4 @@ A simple platform to scrape & Analyze last.fm scrobbles.
 - 📊 Chart and Visualization Generation with Plotly
 - 🎶 Playlist Generator
 - 👀 Interesting Progress bars
+- 🧠 Machine Learning based recommendations for the next song
