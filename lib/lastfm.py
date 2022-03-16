@@ -80,7 +80,7 @@ def getPages(config):
     
     # Set total number of pages as collected from blank API call for user.getRecentTracks.
     response = getReq(page=1, user=user, key=key, useragent=useragent, load={'limit':200})
-    # total_pages = int((response.json())['recenttracks']['@attr']['totalPages'])
+    total_pages = int((response.json())['recenttracks']['@attr']['totalPages'])
     all_scrobbles = []
     for i in range(total_pages):
         key = config.getKey()
