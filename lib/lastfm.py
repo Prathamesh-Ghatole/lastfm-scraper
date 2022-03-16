@@ -1,7 +1,3 @@
-from distutils.command.config import config
-from re import I, X
-from tkinter.ttk import Progressbar
-from urllib import response
 import requests
 import json
 import requests_cache as rcache
