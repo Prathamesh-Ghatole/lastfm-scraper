@@ -1,3 +1,4 @@
+from numpy import int0
 import requests
 import json
 import requests_cache as rcache
@@ -33,16 +34,16 @@ def getReq(user, key, useragent, page=1, load = {}, method = 'user.getRecentTrac
     return api_reply
 
 # Grab a single page from lastfm user.getRecentTracks
-def getPage(config, page=1):
+def getPage(config, page_num):
     
     key=config.getKey()
     user=config.username
     useragent=config.useragent
-    
-    response = getReq(user, key, useragent, page=1, load = {'limit':200}, method = 'user.getRecentTracks')
+    response = getReq(user, key, useragent, page=int(page_num), load = {'limit':200}, method = 'user.getRecentTracks')
     # Raise error if status code is anything other than 200.
+
     if response.status_code != 200:
-        raise Exception('status code: {}'.format(response.status_code))
+        raise Exception('status code: {}'.format(response.url))
     
     # 
     page = (response.json())['recenttracks']['track']
@@ -77,13 +78,17 @@ def getPages(config):
     # Set total number of pages as collected from blank API call for user.getRecentTracks.
     response = getReq(page=1, user=user, key=key, useragent=useragent, load={'limit':200})
     total_pages = int((response.json())['recenttracks']['@attr']['totalPages'])
+    
+    # Loop and fetch scrobbles
     all_scrobbles = []
-    for i in range(total_pages):
-        key = config.getKey()
-        # print('key = {}'.format(key))
-        pg = getPage(config, page=i)
+    
+    for x in range(1,total_pages+1):
+        pg = getPage(config, page_num=x)
         # print(pg)
-        Progress(iteration = i, total=total_pages)
         all_scrobbles = [*all_scrobbles, *pg]
+        Progress(iteration = x, total=total_pages)
     
     return all_scrobbles
+
+# def cleanup():
+    
