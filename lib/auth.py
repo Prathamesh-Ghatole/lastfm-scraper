@@ -3,7 +3,7 @@
 import json
 
 # Use functions given below to generate or load Config.json
-def initialize():
+def init():
     try:
         #load config.json if it exists
         cfg_object = loadConfig()

@@ -4,21 +4,17 @@
 
 import lib.auth as auth
 import lib.lastfm as lastfm
-import pandas as pd
 
-config = auth.initialize()
+config = auth.init()
 
 lastfm.initCache()
 
-# response = lastfm.getReq(key=config.getKey(), useragent=config.useragent, user=config.username, method='artist.getInfo', load={'artist':'Hardwell'})
-# response = lastfm.getPages(key=config.getKey(), useragent=config.useragent, user=config.username, method='user.getRecentTracks')
-response = lastfm.getPages(config)
+print("Fetching Scrobbles:")
+scrobbles = lastfm.grab(config)
+print("Done!\n")
 
-# print(response)
-# print(type)
-df = pd.DataFrame(response)
-print(df.head(15))
-# print(df.columns)
-df.to_csv('export.csv', encoding='utf-8-sig')
-df.to_json('export.json')
-# print(lastfm.session)
+format = input("Enter format to export in:\n(JSON / CSV / [ALL]): ")
+if format != 'JSON' or format != 'CSV':
+    format = 'ALL'
+
+lastfm.export(scrobbles, format)

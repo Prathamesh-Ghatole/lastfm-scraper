@@ -1,6 +1,6 @@
-from numpy import int0
+import pandas as pd
 import requests
-import json
+# import json
 import requests_cache as rcache
 
 # Initializing the cache for requests_cache to cache requests.
@@ -90,5 +90,74 @@ def getPages(config):
     
     return all_scrobbles
 
-# def cleanup():
+def cleanup(all_scrobbles):
+    # Convert list of pages to dataframe
+    df = pd.DataFrame(all_scrobbles)
+
+    # Split dictionary columns into separate columns
+    def split_column(dataframe, column_name, name1, name2, del_column=False):
+        def splt(entry):
+            if entry==None or entry=='None':
+                return (None, None)
+            d = (entry)
+            return (d[tuple(d.keys())[0]],d[tuple(d.keys())[1]])
+
+        dataframe[str(name1)] = dataframe[column_name].map(lambda x: splt(x)[0])
+        dataframe[str(name2)] = dataframe[column_name].map(lambda x: splt(x)[1])
+        
+        if del_column==True:
+            dataframe.drop([column_name], axis=1, inplace=True)
+    # Use function split_column to split columns and place them into the dataframe
+    split_column(df, 'artist', 'artist_mbid', 'artist_name', del_column=True)
+    split_column(df, 'album', 'album_mbid', 'album_name', del_column=True)
+    split_column(df, 'date', 'date_uts', 'date_text', del_column=True)
     
+    #Drop useless columns
+    df.drop(['image', 'streamable', 'date_uts'], axis=1, inplace=True)
+    if '@attr' in df.columns:
+        df.drop(['@attr'], axis=1, inplace=True)
+
+    #Convert date column to pandas datetime format.
+    df.date_text = pd.to_datetime(df.date_text)
+
+    #Rename the date column
+    df.rename({'date_text':'date'}, inplace=True, axis=1)
+
+    #Reorder the columns
+    df = df[['artist_name', 'name', 'album_name', 'date', 'mbid', 'artist_mbid', 'album_mbid', 'url']]
+
+    return df
+
+# Driver function to grab and clean all scrobbles
+def grab(config):
+    
+    # Get list of scrobbles
+    scrobble_list = getPages(config)
+    
+    #Clean the list of scrobbles, and return it.
+    # return cleanup(scrobble_list)
+    return scrobble_list
+
+#Export it in desired format.
+def export(clean_df,format='ALL'):
+        
+        if format == 'JSON':
+            pth = 'exports/export.json'
+            clean_df.to_json(pth)
+            print("Exported data to '{}'\n".format('exports/export.json'))
+        
+        if format == 'CSV':
+            pth = 'exports/export.csv'
+            clean_df.to_json(pth)
+            clean_df.to_csv(pth, encoding='utf-8-sig')
+            print("Exported data to '{}'\n".format('exports/export.csv'))
+
+        if format == 'ALL':
+            pth = 'exports/export.json'
+            clean_df.to_json(pth)
+            print("Exported data to '{}'\n".format('exports/export.json'))
+
+            pth = 'exports/export.csv'
+            clean_df.to_json(pth)
+            clean_df.to_csv(pth, encoding='utf-8-sig')
+            print("Exported data to '{}'\n".format('exports/export.csv'))
