@@ -134,30 +134,18 @@ def grab(config):
     # Get list of scrobbles
     scrobble_list = getPages(config)
     
-    #Clean the list of scrobbles, and return it.
+    # Clean the list of scrobbles, and return it.
     # return cleanup(scrobble_list)
-    return scrobble_list
+    return pd.DataFrame(scrobble_list)
 
 #Export it in desired format.
 def export(clean_df,format='ALL'):
-        
-        if format == 'JSON':
-            pth = 'exports/export.json'
-            clean_df.to_json(pth)
-            print("Exported data to '{}'\n".format('exports/export.json'))
-        
-        if format == 'CSV':
-            pth = 'exports/export.csv'
-            clean_df.to_json(pth)
-            clean_df.to_csv(pth, encoding='utf-8-sig')
-            print("Exported data to '{}'\n".format('exports/export.csv'))
 
-        if format == 'ALL':
-            pth = 'exports/export.json'
-            clean_df.to_json(pth)
-            print("Exported data to '{}'\n".format('exports/export.json'))
+        pth = 'exports/export.json'
+        clean_df.to_json(pth)
+        print("Exported data to '{}'\n".format('exports/export.json'))
 
-            pth = 'exports/export.csv'
-            clean_df.to_json(pth)
-            clean_df.to_csv(pth, encoding='utf-8-sig')
-            print("Exported data to '{}'\n".format('exports/export.csv'))
+        pth = 'exports/export.csv'
+        clean_df.to_json(pth)
+        clean_df.to_csv(pth, encoding='utf-8-sig')
+        print("Exported data to '{}'\n".format('exports/export.csv'))

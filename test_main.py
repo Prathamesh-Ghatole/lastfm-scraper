@@ -6,15 +6,14 @@ import lib.auth as auth
 import lib.lastfm as lastfm
 
 config = auth.init()
-
 lastfm.initCache()
 
 print("Fetching Scrobbles:")
 scrobbles = lastfm.grab(config)
 print("Done!\n")
 
-format = input("Enter format to export in:\n(JSON / CSV / [ALL]): ")
-if format != 'JSON' or format != 'CSV':
-    format = 'ALL'
+type = input("Enter type to export in:\n(JSON / CSV / [ALL]): ")
+if type != 'JSON' or type != 'CSV':
+    type = 'ALL'
 
-lastfm.export(scrobbles, format)
+lastfm.export(scrobbles, type)
