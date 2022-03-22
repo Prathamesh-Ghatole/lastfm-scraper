@@ -5,5 +5,14 @@
 }
 /* postion */
 .position-relative{
-    margin-top: 10%;
+    margin-top: 5%;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
