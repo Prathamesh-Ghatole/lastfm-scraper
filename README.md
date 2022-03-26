@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/webserver/static/assets/lastfm_scraper_logo.png" width="400" height="101">
+<img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/webserver/static/assets/lastfm_scraper_logo_white.png" width="400" height="101">
 
 ### This Project is Under Construction! ⚠
 A simple platform to scrape & Analyze last.fm scrobbles.
