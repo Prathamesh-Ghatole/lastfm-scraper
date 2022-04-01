@@ -4,6 +4,6 @@ app.config['SECRET_KE']= "SuperSecure"
 
 from .views import views
 app.register_blueprint(views, url_prefix="/")
-
+app.register_blueprint(views, url_prefix="/download")
 
 

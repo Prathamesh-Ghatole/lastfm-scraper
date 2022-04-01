@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, send_file, redirect, url_for, flash
 import lib.auth as auth
 import lib.lastfm as lastfm
 import sys
@@ -23,5 +23,19 @@ def index():
             type = 'ALL'
 
         lastfm.export(scrobbles, type)
+        
+        return redirect(url_for("views.download"))
 
     return render_template("base.html")
+
+
+@views.route("/download")
+def download():
+    if type == 'JSON':
+        path = "E:\Projects\lastfm-scraper\exports\export.json"
+    elif type == "CSV":
+        path = "E:\Projects\lastfm-scraper\exports\export.csv"
+    else:
+        path = "E:\Projects\lastfm-scraper\exports\export.csv"
+
+    return send_file(path, as_attachment = True, )
