@@ -31,11 +31,11 @@ def index():
 
 @views.route("/download")
 def download():
-    if type == 'JSON':
-        path = "E:\Projects\lastfm-scraper\exports\export.json"
-    elif type == "CSV":
-        path = "E:\Projects\lastfm-scraper\exports\export.csv"
-    else:
-        path = "E:\Projects\lastfm-scraper\exports\export.csv"
+    path = "..\exports\export.json"
 
+    if type == 'JSON':
+        path = "..\exports\export.json"
+    if type == "CSV":
+        path = "..\exports\export.csv"
+          
     return send_file(path, as_attachment = True, )
