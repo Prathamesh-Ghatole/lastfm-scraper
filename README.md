@@ -12,6 +12,7 @@ A simple platform to scrape & Analyze last.fm scrobbles.
 - 📜 Metadata Enhancement (Extended _Artist-Info_, _Genre-Tags_, _Composer-info_, _producers_, etc.) with [_MusicBrainz_](https://musicbrainz.org/doc/MusicBrainz_API) & [_Spotify_](https://developer.spotify.com/documentation/web-api/) APIs.
 - ➕ Update Scrobbles/Listens on Last.fm & Listenbrainz
 - 📊 Chart and Visualization Generation with Plotly
+  - Word Clouds
 - 🎶 Playlist Generator
 - 🧠 Machine Learning based recommendations for the next song
 - 🧹 Clean-up Metadata
