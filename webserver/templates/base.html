@@ -12,7 +12,20 @@
     <title>Lastfm Scraper</title>
     <link rel="icon" type="image/x-icon" href="../static/assets/favicon.png">
 </head>
-<body>
+<body onload="myFunction()">
+    <div id = "loading"></div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% if type %}
+{% for message in messages %}
+      <!-- <div class="alert alert-info" role="alert">{{message}}<a href="/download" class="alert-link"> Download</a> , Please be patience.
+      </div> -->
+      <div id = "loading">Please be patience while downloading, & click on <a href="/download/{{type}}" class="alert-link"> Download</a></div>
+{% endfor %} 
+{% endif %}
+{% endif %}
+{% endwith %}
+
     <img src="../static/assets/lastfm_scraper_logo_black.png" width="400" height="101" class="center">
     <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lastfm_logo.svg/2560px-Lastfm_logo.svg.png" width="400" height="101" class="center"> -->
     <div class="position-relative">
@@ -43,6 +56,13 @@
     
     
     <!-- Bootsrap 5 script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script>
+        var preloader = document.getElementById("loading");
+        function myFunction(){
+            preloader.style.display= "none"
+        }
+    </script>
 </body>
 </html>
