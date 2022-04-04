@@ -26,7 +26,7 @@ def index():
 
     return render_template("base.html")
 
-    
+
 @views.route("/download/<type>")
 def download(type):
     config = auth.init()
@@ -44,6 +44,5 @@ def download(type):
         path = ".\..\exports\export.json"
     elif dictt["type"] == "CSV":
         path = ".\..\exports\export.csv"
-    send_file(path, as_attachment = True )
     return send_file(path, as_attachment = True )
 
