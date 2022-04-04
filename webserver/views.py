@@ -26,7 +26,7 @@ def index():
 
     return render_template("base.html")
 
-
+    
 @views.route("/download/<type>")
 def download(type):
     config = auth.init()
