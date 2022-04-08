@@ -41,8 +41,8 @@ def download(type):
 
     print(dictt["type"])
     if dictt["type"] == 'JSON':
-        path = ".\..\exports\export.json"
+        path = "../exports/export.json"
     elif dictt["type"] == "CSV":
-        path = ".\..\exports\export.csv"
+        path = "../exports/export.csv"
     return send_file(path, as_attachment = True )
 
