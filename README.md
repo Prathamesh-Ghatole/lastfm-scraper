@@ -1,8 +1,11 @@
-<img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/webserver/static/assets/lastfm_scraper_logo_white.png" width="400" height="101">
+<!-- <img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/webserver/static/assets/lastfm_scraper_logo_white.png" width="400" height="101"> -->
 
-### This Project is Under Construction! ⚠
-A simple platform to scrape & Analyze last.fm scrobbles.
-> **Update**: Web-server is ready! Update flask to forward downloads to the user.
+<img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/webserver/static/assets/lastfm-scraper-preview.gif">
+
+### ⚠ This Project is Under Construction!
+Lastfm-scraper is a simple platform to scrape, clean & analyze your last.fm scrobbles.
+> **Update**: Web-server is ready! Fix download preloader.
+
 ## Done:
 - 🔐 Added authentication features
 - 🔍 Added Module for last.fm requests
