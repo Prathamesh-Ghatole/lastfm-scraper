@@ -44,5 +44,8 @@ def download(type):
         path = "../exports/export.json"
     elif dictt["type"] == "CSV":
         path = "../exports/export.csv"
-    return send_file(path, as_attachment = True )
+    return send_file(path, as_attachment = True)
 
+@views.route("/contact")
+def contact():
+    return render_template("contact.html")
