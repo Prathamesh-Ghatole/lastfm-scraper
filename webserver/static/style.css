@@ -27,3 +27,20 @@
     margin-top: 10%;
     margin-bottom: 0%;
   }
+
+.bottomnav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
+}
+
+.bottomnav-text {
+    display: inline-block;
+    margin: 0 10px;
+    width: 2;
+    height: 20;
+    font-family: 'Roboto Mono', monospace;
+}
