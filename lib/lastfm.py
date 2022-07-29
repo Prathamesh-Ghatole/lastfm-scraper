@@ -3,20 +3,20 @@ import requests
 # import json
 import requests_cache as rcache
 
-# Initializing the cache for requests_cache to cache requests.
 def initCache():
+    """Initializing the cache for requests_cache to cache requests."""
     rcache.install_cache(cache_name = 'request-cache/lastfm', backend='sqlite', expire_after = 180)
     global session
     session = rcache.CachedSession()
 
-# Function for flushing / resetting cache for requests_cache
 def flushCache():
+    '''Function for flushing / resetting cache for requests_cache'''
     session.cache.clear()
 
-# Function for sending a generic request to last.fm
-# When using, pass in params user=config.username, key=config.getKey(), useragent=config.useragent
-# Use the load parameter to add custom arguments.
 def getReq(user, key, useragent, page=1, load = {}, method = 'user.getRecentTracks'):
+    """Function for sending a generic request to last.fm
+When using, pass in params user=config.username, key=config.getKey(), useragent=config.useragent
+Use the load parameter to add custom arguments."""
     
     headers = {'user-agent': useragent}
     payload ={
@@ -33,8 +33,8 @@ def getReq(user, key, useragent, page=1, load = {}, method = 'user.getRecentTrac
     
     return api_reply
 
-# Grab a single page from lastfm user.getRecentTracks
 def getPage(config, page_num):
+    """Grab a single page from lastfm user.getRecentTracks"""
     
     key=config.getKey()
     user=config.username
@@ -58,8 +58,8 @@ def getPage(config, page_num):
 
     return page
 
-# Display a status bar on console while fetching data.
 def Progress (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """Display a status bar on console while fetching data."""
 
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
