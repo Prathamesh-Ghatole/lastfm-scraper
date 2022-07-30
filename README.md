@@ -7,12 +7,12 @@
 
 ### ⚠ This Project is Under Construction!
 Lastfm-scraper is a simple platform to scrape, clean & analyze your last.fm scrobbles.
-> **Update**: Web-server is ready! Fix download preloader.
+> **Update**: Web-server is ready!
 
 ## Done:
 - 🔐 Added authentication features
 - 🔍 Added Module for last.fm requests
-- 📥 Scrape all streaming history from last.fm
+- 📥 Scrape & Download all streaming history from last.fm
 
 ## Upcoming Feature Set:
 - 📜 Metadata Enhancement (Extended _Artist-Info_, _Genre-Tags_, _Composer-info_, _producers_, etc.) with [_MusicBrainz_](https://musicbrainz.org/doc/MusicBrainz_API) & [_Spotify_](https://developer.spotify.com/documentation/web-api/) APIs.
@@ -26,9 +26,4 @@ Lastfm-scraper is a simple platform to scrape, clean & analyze your last.fm scro
 
 ## To-Do:
 - Add Interesting Progress bars (refer listenbrainz.org imports)
-- Add links to git, developer contacts and info.
-- Rename Exports for better concurrency
-- setup db for exports
-- add params for username in lastfm module
 - clean up format selection / export-algo
-- Setup flask for actually sending files to the user.
