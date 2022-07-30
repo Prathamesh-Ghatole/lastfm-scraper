@@ -1,6 +1,9 @@
 <!-- <img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/static/assets/lastfm_scraper_logo_white.png" width="400" height="101"> -->
 
-<img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/static/assets/lastfm-scraper-preview.gif">
+<img src="https://github.com/Prathamesh-Ghatole/lastfm-scraper/raw/main/static/assets/lastfm-scraper-preview.gif">
+<!-- <img src="https://raw.githubusercontent.com/Prathamesh-Ghatole/lastfm-scraper/main/static/assets/lastfm-scraper-preview.gif"> -->
+
+
 
 ### ⚠ This Project is Under Construction!
 Lastfm-scraper is a simple platform to scrape, clean & analyze your last.fm scrobbles.
