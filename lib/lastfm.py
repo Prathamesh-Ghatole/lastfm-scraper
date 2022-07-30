@@ -139,13 +139,16 @@ def grab(config):
     return pd.DataFrame(scrobble_list)
 
 #Export it in desired format.
-def export(clean_df,format='ALL'):
-
-        pth = 'exports/export.json'
-        clean_df.to_json(pth)
-        print("Exported data to '{}'\n".format('exports/export.json'))
-
-        pth = 'exports/export.csv'
-        clean_df.to_json(pth)
-        clean_df.to_csv(pth, encoding='utf-8-sig')
-        print("Exported data to '{}'\n".format('exports/export.csv'))
+def export(cleaned_df, username , type = 'csv'):
+    
+    base = f"exports/{username}"
+    
+    if type == 'json':
+        pth = base+".json"
+        cleaned_df.to_json(pth)
+        print(f"Exported data to '{pth}'\n")
+    
+    elif type == 'csv':
+        pth = base+".csv"
+        cleaned_df.to_csv(pth, encoding='utf-8-sig')
+        print(f"Exported data to '{pth}'\n")

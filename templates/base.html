@@ -20,28 +20,27 @@
         <div class="container my-5">
             
             <!-- <div id = "loading"></div> -->
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% if type %}
-            {% for message in messages %}
-            
+            {% if dl_flag %}
+            <meta http-equiv="refresh" content="0; url=/download/{{file_name}}">
+            <div style="text-align: center;">Fetching Scrobbles. Might take a while.</div>
             <img src="../static/assets/spinner.gif" class="middle">
-            <div style="text-align: center;">Fetching Scrobbles. Might take a while!</div>
-            <meta http-equiv="refresh" content="0; url=/download/{{type}}" />
-            {% endfor %}
             {% endif %}
-            {% endif %}
-            {% endwith %}
             
+            {% if complete_flag %}
+                <meta http-equiv="refresh" content="0; url=/send/{{file_name}}">
+                <div style="text-align: center;">Scrobbles Fetched!.</div>
+                <meta http-equiv="refresh" content="url=/">
+            {% endif %}
+                
+
             <form class="row" method = "POST">
                 <div class="col-lg-12 my-5">
                   <input type="text" name ="Username" class="form-control form-control-lg" id="Username" placeholder="Username">
                 </div>
                 <div class="col-6 my-3">
                     <select name="file_type" class="form-select form-select-lg">
-                        <option>Select Export Format</option>
-                        <option>JSON</option>
                         <option>CSV</option>
+                        <option>JSON</option>
                       </select>
                 </div>
                 <div class="col-6 my-3">
@@ -52,17 +51,17 @@
               </form>
         </div>
 
-        <div class="bottomnav">
-            <img src="../static/assets/home.png" width="20" height="20">
-            <a href="#home" class="bottomnav-text">Home</a>
+    <div class="bottomnav">
+        <img src="../static/assets/home.png" width="20" height="20">
+        <a href="/#home" class="bottomnav-text">Home</a>
 
-            <img src="../static/assets/git.png" width="20" height="20">
-            <a href = "https://github.com/Prathamesh-Ghatole/lastfm-scraper" class="bottomnav-text">GitHub</a>
-            
-            <img src="../static/assets/heart.png" width="20" height="20">
-            <a href="http://prathamesh-ghatole.github.io/" class="bottomnav-text">Prathamesh Ghatole</a>
-            <a> | </a>
-            <a href="https://varmor.github.io/" class="bottomnav-text">Varun More</a>
-        </div>
+        <img src="../static/assets/git.png" width="20" height="20">
+        <a href = "https://github.com/Prathamesh-Ghatole/lastfm-scraper" class="bottomnav-text">GitHub</a>
+        
+        <img src="../static/assets/heart.png" width="20" height="20">
+        <a href="http://prathamesh-ghatole.github.io/" class="bottomnav-text">Prathamesh Ghatole</a>
+        <a> | </a>
+        <a href="https://varmor.github.io/" class="bottomnav-text">Varun More</a>
+    </div>
 </body>
 </html>
