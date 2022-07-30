@@ -5,7 +5,7 @@ import requests_cache as rcache
 
 def initCache():
     """Initializing the cache for requests_cache to cache requests."""
-    rcache.install_cache(cache_name = 'request-cache/lastfm', backend='sqlite', expire_after = 180)
+    rcache.install_cache(cache_name = 'request-cache/lastfm', backend='sqlite', expire_after = 300)
     global session
     session = rcache.CachedSession()
 
