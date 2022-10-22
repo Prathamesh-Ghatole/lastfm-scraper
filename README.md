@@ -24,5 +24,8 @@
   - Resolve artist aliases to single common name. (e.g. Reslove ```TK from Ling tosite sigure``` & ```TK from 凛として時雨``` to the prior.)
 
 ## To-Do:
+- Implement a cleanup algorithm for the exports.
 - Add Interesting Progress bars (refer listenbrainz.org imports)
-- clean up format selection / export-algo
+- Clean up format selection / export-algo
+- Update config system to work with simpler config.py files instead.
+- Auto delete old exports from system.
