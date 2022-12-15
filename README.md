@@ -6,7 +6,7 @@
 
 
 ### Lastfm-scraper is a simple platform to scrape, clean & analyze your last.fm scrobbles.
-> **Update**: This project is currently hosted on: http://lastfm-scraper.azurewebsites.net/
+> **Update**: This project is currently hosted on: http://lastfm-scraper.azurewebsites.net/ (Takes a while to load!)
 
 ## Done:
 - 🔐 Added authentication features
