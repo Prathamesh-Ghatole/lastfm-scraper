@@ -24,6 +24,7 @@
   - Resolve artist aliases to single common name. (e.g. Reslove ```TK from Ling tosite sigure``` & ```TK from 凛として時雨``` to the prior.)
 
 ## To-Do:
+- Add parallel processing features with concurrent futures.
 - Implement a cleanup algorithm for the exports.
 - Add Interesting Progress bars (refer listenbrainz.org imports)
 - Clean up format selection / export-algo
