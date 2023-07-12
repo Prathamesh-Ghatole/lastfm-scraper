@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, send_file, redirect
-from numpy import False_
+from flask import Flask, render_template, request, send_file
 import lib.auth as auth
 import lib.lastfm as lastfm
 from time import sleep
 
 app = Flask(__name__)
 _ = auth.init()
+
 
 @app.route("/#home", methods=["POST", "GET"])
 @app.route("/", methods=["POST", "GET"])
@@ -14,15 +14,17 @@ def index():
     # config = auth.init()
 
     if request.method == "POST":
-        
         username = request.form["Username"]
         type = request.form["file_type"].lower()
         file_name = username + "." + type
-        
-        return render_template("base.html", file_name = file_name, dl_flag = True, complete_flag = False)
+
+        return render_template(
+            "base.html", file_name=file_name, dl_flag=True, complete_flag=False
+        )
         # return redirect(f"/download/{file_name}")
 
-    return render_template("base.html", dl_flag = False, complete_flag = False)
+    return render_template("base.html", dl_flag=False, complete_flag=False)
+
 
 def generate_download(file_name):
     # Initialize default config
@@ -35,27 +37,27 @@ def generate_download(file_name):
     print(f"Fetching Scrobbles for {config.username}: ")
     scrobbles = lastfm.grab(config)
 
-    lastfm.export(
-        cleaned_df = scrobbles, 
-        username = config.username, 
-        type = config.type
-        )
+    lastfm.export(cleaned_df=scrobbles, username=config.username, type=config.type)
 
     print("Done!\n")
 
-    return f'exports/{file_name}'
+    return f"exports/{file_name}"
+
 
 @app.route("/download/<file_name>")
 def download(file_name):
-    dl_path = generate_download(file_name)
-    return render_template("base.html", file_name = file_name, dl_flag = False, complete_flag = True)
+    # dl_path = generate_download(file_name)
+    return render_template(
+        "base.html", file_name=file_name, dl_flag=False, complete_flag=True
+    )
+
 
 @app.route("/send/<file_name>/")
 def send(file_name):
     sleep(0.2)
-    return send_file(f'exports/{file_name}', as_attachment = True)
+    return send_file(f"exports/{file_name}", as_attachment=True)
 
 
 #################
-if(__name__ == "__main__"):
-    app.run(debug = True, host='127.0.0.1', port=6969)
+if __name__ == "__main__":
+    app.run(debug=True, host="127.0.0.1", port=6969)
