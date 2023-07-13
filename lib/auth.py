@@ -85,7 +85,7 @@ def load_config():
         config = json.load(f)
 
     # New class Conf that takes in newly loaded config
-    class ConfigClass:
+    class Config:
         useragent = ""
         username = ""
         type = ""
@@ -113,4 +113,4 @@ def load_config():
             return self.keylist[self.num]
 
     print("Config Loaded Successfully.")
-    return ConfigClass(config)
+    return Config(config)
